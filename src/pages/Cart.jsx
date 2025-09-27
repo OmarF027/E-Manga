@@ -1,4 +1,3 @@
-// Cart.jsx
 import { useOutletContext } from 'react-router-dom';
 
 const Cart = () => {
@@ -27,15 +26,15 @@ const Cart = () => {
   if (cart.length === 0) {
     return (
       <div style={{ textAlign: 'center', padding: '40px' }}>
-        <h2>Your Cart</h2>
-        <p>Your cart is empty</p>
+        <h2>Il Tuo Carrello</h2>
+        <p>Il carrello è vuoto</p>
       </div>
     );
   }
 
   return (
     <div style={{ padding: "20px", maxWidth: "800px", margin: "0 auto" }}>
-      <h2 style={{ textAlign: 'center', marginBottom: '30px' }}>Your Cart</h2>
+      <h2 style={{ textAlign: 'center', marginBottom: '30px' }}>Il Tuo Carrello</h2>
       <div style={{ backgroundColor: "#fff", borderRadius: "8px", boxShadow: "0 2px 4px rgba(0,0,0,0.1)" }}>
         {cart.map((item) => (
           <div
@@ -54,7 +53,7 @@ const Cart = () => {
             />
             <div style={{ flexGrow: 1 }}>
               <h3 style={{ margin: "0 0 5px 0", fontSize: "16px" }}>{item.title}</h3>
-              <p style={{ margin: "0", fontWeight: "bold" }}>${item.price}</p>
+              <p style={{ margin: "0", fontWeight: "bold" }}>€{item.price.toFixed(2)}</p>
             </div>
             <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
               <button 
@@ -98,12 +97,12 @@ const Cart = () => {
                 cursor: "pointer" 
               }}
             >
-              Remove
+              Rimuovi
             </button>
           </div>
         ))}
         <div style={{ padding: "15px", textAlign: "right", borderTop: "2px solid #eee" }}>
-          <h3 style={{ margin: "0" }}>Total: ${calculateTotal()}</h3>
+          <h3 style={{ margin: "0" }}>Totale: €{calculateTotal()}</h3>
         </div>
       </div>
     </div>

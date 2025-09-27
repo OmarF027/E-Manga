@@ -1,0 +1,336 @@
+/* Footer.css */
+.footer {
+  background: linear-gradient(135deg, #0c0c0c 0%, #000000 100%);
+  color: #ffffff;
+  font-family: 'Kumbh Sans', sans-serif;
+  padding: 50px 20px 25px;
+  font-size: 14px;
+  border-top: 3px solid #e63946;
+  position: relative;
+  overflow: hidden;
+}
+
+.footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #e63946, transparent);
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+/* Top Section - Migliorata */
+.footer-top {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  margin-bottom: 50px;
+  padding-bottom: 40px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  align-items: start;
+}
+
+.footer-brand h3 {
+  font-size: 2.2rem;
+  margin-bottom: 15px;
+  font-weight: 800;
+  background: linear-gradient(45deg, #e63946, #f4a261);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: -0.5px;
+}
+
+.footer-brand p {
+  color: #ffffff;
+  margin-bottom: 25px;
+  line-height: 1.6;
+  font-size: 1rem;
+  max-width: 300px;
+  opacity: 0.9;
+}
+
+.footer-social {
+  display: flex;
+  gap: 12px;
+}
+
+.footer-social a {
+  color: #fff;
+  text-decoration: none;
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+}
+
+.footer-social a:hover {
+  background: #e63946;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(230, 57, 70, 0.3);
+}
+
+/* Newsletter - Design Moderno */
+.footer-newsletter {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 25px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+.footer-newsletter h4 {
+  margin-bottom: 8px;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.footer-newsletter p {
+  color: #ffffff;
+  margin-bottom: 20px;
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
+
+.footer-newsletter form {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.footer-newsletter input {
+  flex: 1;
+  min-width: 250px;
+  padding: 14px 16px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+}
+
+.footer-newsletter input:focus {
+  outline: none;
+  border-color: #e63946;
+  background: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 0 0 3px rgba(230, 57, 70, 0.1);
+}
+
+.footer-newsletter input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.footer-newsletter button {
+  padding: 14px 28px;
+  background: linear-gradient(135deg, #e63946, #f4a261);
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.footer-newsletter button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(230, 57, 70, 0.4);
+}
+
+/* Bottom Section - Migliorata */
+.footer-bottom {
+  padding-top: 25px;
+}
+
+.footer-bottom-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 30px;
+  margin-bottom: 20px;
+  padding: 0 10px;
+}
+
+.location, .copyright, .payment-title {
+  padding: 8px 0;
+  color: #ffffff;
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
+
+.location {
+  flex: 1;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.location::before {
+  content: "📍";
+  font-size: 1.1rem;
+}
+
+.copyright {
+  flex: 1;
+  text-align: center;
+  font-weight: 500;
+  color: #ffffff;
+}
+
+.payment-title {
+  flex: 1;
+  text-align: right;
+  font-weight: 500;
+}
+
+/* Badges - Design Moderno */
+.footer-bottom-bottom {
+  display: flex;
+  justify-content: flex-end;
+  padding: 0 10px;
+}
+
+.payment-badges {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.badge {
+  background: rgba(255, 255, 255, 0.15);
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  white-space: nowrap;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  color: #ffffff;
+}
+
+.badge:hover {
+  background: rgba(230, 57, 70, 0.3);
+  border-color: rgba(230, 57, 70, 0.5);
+  transform: translateY(-1px);
+}
+
+/* Responsive Design Migliorato */
+@media (max-width: 968px) {
+  .footer-top {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  
+  .footer-brand p {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .footer {
+    padding: 40px 15px 20px;
+  }
+  
+  .footer-top {
+    gap: 30px;
+    margin-bottom: 40px;
+    padding-bottom: 30px;
+  }
+  
+  .footer-bottom-top {
+    flex-direction: column;
+    gap: 15px;
+    text-align: center;
+    margin-bottom: 25px;
+  }
+  
+  .location, .copyright, .payment-title {
+    text-align: center;
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .footer-bottom-bottom {
+    justify-content: center;
+  }
+  
+  .payment-badges {
+    justify-content: center;
+    gap: 6px;
+  }
+  
+  .footer-newsletter {
+    padding: 20px;
+  }
+  
+  .footer-newsletter form {
+    flex-direction: column;
+  }
+  
+  .footer-newsletter input {
+    min-width: auto;
+  }
+  
+  .footer-brand h3 {
+    font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer {
+    padding: 30px 12px 15px;
+  }
+  
+  .payment-badges {
+    gap: 4px;
+  }
+  
+  .badge {
+    padding: 6px 12px;
+    font-size: 0.75rem;
+  }
+  
+  .footer-social a {
+    width: 38px;
+    height: 38px;
+  }
+}
+
+/* Animazioni aggiuntive */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.footer-top, .footer-bottom {
+  animation: fadeInUp 0.6s ease-out;
+}

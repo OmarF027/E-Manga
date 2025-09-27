@@ -1,0 +1,143 @@
+/* MangaDetail.css */
+.manga-detail-container {
+  padding: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.manga-detail-back-link {
+  display: block;
+  text-decoration: none;
+  color: #007bff;
+  margin-bottom: 20px;
+  font-size: 16px;
+  transition: color 0.3s;
+}
+
+.manga-detail-back-link:hover {
+  color: #0056b3;
+  text-decoration: underline;
+}
+
+.manga-detail-content {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.manga-detail-image-container {
+  flex: 1;
+  min-width: 300px;
+}
+
+.manga-detail-image {
+  width: 100%;
+  max-width: 400px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.manga-detail-info {
+  flex: 2;
+  min-width: 300px;
+}
+
+.manga-detail-title {
+  margin-top: 0;
+  color: #333;
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+
+.manga-detail-info-item {
+  margin-bottom: 15px;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.manga-detail-info-item strong {
+  color: #555;
+}
+
+.manga-detail-quantity-selector {
+  display: flex;
+  gap: 5px;
+  margin-bottom: 20px;
+  align-items: center;
+}
+
+.manga-detail-quantity-label {
+  margin-right: 10px;
+  font-weight: bold;
+}
+
+.manga-detail-quantity-btn {
+  padding: 5px 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: #f8f9fa;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.manga-detail-quantity-btn:hover {
+  background-color: #e9ecef;
+}
+
+.manga-detail-quantity-input {
+  width: 60px;
+  text-align: center;
+  padding: 5px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.manga-detail-add-to-cart-btn {
+  padding: 12px 30px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.manga-detail-add-to-cart-btn:hover {
+  background-color: #218838;
+}
+
+.manga-detail-loading {
+  text-align: center;
+  padding: 40px;
+  font-size: 18px;
+}
+
+.manga-detail-error {
+  text-align: center;
+  padding: 40px;
+  color: #dc3545;
+  font-size: 18px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .manga-detail-content {
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .manga-detail-image-container,
+  .manga-detail-info {
+    min-width: 100%;
+  }
+  
+  .manga-detail-image {
+    max-width: 100%;
+  }
+  
+  .manga-detail-title {
+    font-size: 24px;
+  }
+}

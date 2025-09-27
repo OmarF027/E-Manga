@@ -1,16 +1,16 @@
 // App.jsx
 import { useState } from 'react';
 import { Outlet, Link, useLocation } from 'react-router-dom';
+import FeaturesSection from './components/FeaturesSection';
+import Footer from './components/Footer';
 
 function App() {
   const [cart, setCart] = useState([]);
   const location = useLocation();
 
-  // Funzione per aggiungere prodotti al carrello
   const addToCart = (product, quantity) => {
     setCart(prevCart => {
       const existingItem = prevCart.find(item => item.id === product.id);
-      
       if (existingItem) {
         return prevCart.map(item =>
           item.id === product.id
@@ -23,13 +23,11 @@ function App() {
     });
   };
 
-  // Funzione per aggiornare la quantità di un prodotto nel carrello
   const updateQuantity = (id, newQuantity) => {
     if (newQuantity <= 0) {
       removeFromCart(id);
       return;
     }
-    
     setCart(prevCart =>
       prevCart.map(item =>
         item.id === id ? { ...item, quantity: newQuantity } : item
@@ -37,18 +35,17 @@ function App() {
     );
   };
 
-  // Funzione per rimuovere un prodotto dal carrello
   const removeFromCart = (id) => {
     setCart(prevCart => prevCart.filter(item => item.id !== id));
   };
 
-  // Calcola il numero totale di articoli nel carrello
   const getTotalItems = () => {
     return cart.reduce((total, item) => total + item.quantity, 0);
   };
 
   return (
-    <div style={{ padding: "20px", minHeight: "100vh", backgroundColor: "#f5f5f5" }}>
+    <div style={{ padding: "20px", minHeight: "100vh", backgroundColor: "#f5f5f5", display: "flex", flexDirection: "column" }}>
+      {/* Navbar */}
       <nav style={{ 
         display: "flex", 
         justifyContent: "space-between", 
@@ -59,7 +56,7 @@ function App() {
         borderRadius: "8px",
         marginBottom: "20px"
       }}>
-        <h1 style={{ margin: 0, color: "#333" }}>Shop</h1>
+        <h1 style={{ margin: 0, color: "#333" }}>E-Manga</h1>
         <div style={{ display: "flex", gap: "20px" }}>
           <Link 
             to="/" 
@@ -113,7 +110,16 @@ function App() {
         </div>
       </nav>
       
-      <Outlet context={{ cart, addToCart, updateQuantity, removeFromCart }} />
+      {/* Main content */}
+      <div style={{ flex: 1 }}>
+        <Outlet context={{ cart, addToCart, updateQuantity, removeFromCart }} />
+      </div>
+
+      {/* Features Section globale */}
+        <FeaturesSection />  
+
+      {/* Footer */}
+      <Footer />
     </div>
   );
 }
