@@ -150,9 +150,13 @@ const Home = () => {
               
               {/* Call-to-Action */}
               <div className="cta-container">
-                <Link to="/shop" className="cta-button">
-                  🛒 Vedi tutti i manga
-                </Link>
+                <Link 
+                to="/shop" 
+                className="cta-button"
+                onClick={() => window.scrollTo(0, 0)}
+              >
+                🛒 Vedi tutti i manga
+              </Link>
               </div>
             </>
           )}
