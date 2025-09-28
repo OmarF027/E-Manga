@@ -1,6 +1,7 @@
 // Shop.jsx
-import { useState, useEffect } from 'react';
-import { useOutletContext } from 'react-router-dom';
+import { useState, useEffect, useLayoutEffect } from 'react';
+import { useOutletContext, Link } from 'react-router-dom';
+import './Shop.css';
 
 const Shop = () => {
   const { addToCart } = useOutletContext();
@@ -8,6 +9,20 @@ const Shop = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+
+  // SOLUZIONE COMBINATA PER SCROLL IN ALTO
+  useLayoutEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  useEffect(() => {
+    if (!loading) {
+      const timer = setTimeout(() => {
+        window.scrollTo({ top: 0, behavior: 'instant' });
+      }, 50);
+      return () => clearTimeout(timer);
+    }
+  }, [loading]);
 
   const selectedMangaIds = [
     13,     // One Piece
@@ -19,7 +34,8 @@ const Shop = () => {
     116778, // Chainsaw Man
     25,     // Fullmetal Alchemist
     21,     // Death Note
-    2       // Berserk
+    2,      // Berserk
+    3       // Slam Dunk
   ];
 
   const mangaPrices = {
@@ -32,7 +48,8 @@ const Shop = () => {
     116778: 7.90,
     25: 7.90,
     21: 6.90,
-    2: 6.90
+    2: 6.90,
+    3: 7.50
   };
 
   useEffect(() => {
@@ -49,8 +66,13 @@ const Shop = () => {
             return {
               id: data.data.mal_id,
               title: data.data.title,
-              image: data.data.images?.jpg?.image_url || "https://via.placeholder.com/150",
-              price: mangaPrices[id] || 7.90
+              image: data.data.images?.jpg?.image_url || "https://via.placeholder.com/200x300/2d3436/ffffff?text=Manga",
+              price: mangaPrices[id] || 7.90,
+              synopsis: data.data.synopsis,
+              chapters: data.data.chapters,
+              volumes: data.data.volumes,
+              score: data.data.score,
+              authors: data.data.authors
             };
           })
         );
@@ -93,35 +115,80 @@ const Shop = () => {
     setQuantities(prev => ({ ...prev, [product.id]: 1 }));
   };
 
-  if (loading) return <p>Caricamento manga...</p>;
-  if (error) return <p>Errore: {error}</p>;
+  if (loading) return (
+    <div className="loading-container">
+      <div className="loading-spinner"></div>
+      <p>Caricamento manga...</p>
+    </div>
+  );
+  
+  if (error) return (
+    <div className="error-container">
+      <p>Errore: {error}</p>
+      <button onClick={() => window.location.reload()}>Riprova</button>
+    </div>
+  );
 
   return (
-    <div>
-      <h1>Collezione Manga</h1>
-      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '20px' }}>
+    <div className="shop-container">
+      <div className="shop-header">
+        <h1>Collezione Manga</h1>
+        <p>Scopri i nostri manga più popolari</p>
+      </div>
+
+      <div className="products-grid">
         {products.map(product => (
-          <div key={product.id} style={{ border: '1px solid #ccc', padding: '10px', width: '200px' }}>
-            <img 
-              src={product.image} 
-              alt={product.title} 
-              style={{ width: '100%', height: 'auto' }} 
-              onError={(e) => e.target.src = 'https://via.placeholder.com/150'}
-            />
-            <h3>{product.title}</h3>
-            <p>€{product.price.toFixed(2)}</p>
-            <div style={{ display: 'flex', gap: '5px', marginBottom: '5px' }}>
-              <button onClick={() => handleDecrement(product.id)}>-</button>
-              <input 
-                type="number" 
-                value={quantities[product.id] || 1} 
-                onChange={(e) => handleQuantityChange(product.id, parseInt(e.target.value) || 1)} 
-                min="1"
-                style={{ width: '40px' }}
-              />
-              <button onClick={() => handleIncrement(product.id)}>+</button>
+          <div key={product.id} className="product-card">
+            {/* Solo l'immagine e il titolo sono cliccabili per i dettagli */}
+            <Link to={`/manga/${product.id}`} className="product-link">
+              <div className="product-image">
+                <img 
+                  src={product.image} 
+                  alt={product.title}
+                  onError={(e) => {
+                    e.target.src = 'https://via.placeholder.com/200x300/2d3436/ffffff?text=Copertina';
+                  }}
+                />
+              </div>
+              
+              <div className="product-info">
+                <h3 className="product-title">{product.title}</h3>
+                <p className="product-price">€{product.price.toFixed(2)}</p>
+              </div>
+            </Link>
+
+            {/* I controlli quantità e il bottone NON sono nel Link */}
+            <div className="product-actions">
+              <div className="quantity-controls">
+                <button 
+                  className="quantity-btn"
+                  onClick={() => handleDecrement(product.id)}
+                  disabled={quantities[product.id] <= 1}
+                >
+                  -
+                </button>
+                <input 
+                  type="number" 
+                  value={quantities[product.id] || 1} 
+                  onChange={(e) => handleQuantityChange(product.id, parseInt(e.target.value) || 1)} 
+                  min="1"
+                  className="quantity-input"
+                />
+                <button 
+                  className="quantity-btn"
+                  onClick={() => handleIncrement(product.id)}
+                >
+                  +
+                </button>
+              </div>
+
+              <button 
+                className="add-to-cart-btn"
+                onClick={() => handleAddToCart(product)}
+              >
+                Aggiungi al carrello
+              </button>
             </div>
-            <button onClick={() => handleAddToCart(product)}>Aggiungi al carrello</button>
           </div>
         ))}
       </div>

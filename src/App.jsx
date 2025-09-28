@@ -87,7 +87,7 @@ function App() {
               position: "relative"
             }}
           >
-            Cart
+            🛒
             {getTotalItems() > 0 && (
               <span style={{
                 position: "absolute",
