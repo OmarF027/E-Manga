@@ -35,7 +35,7 @@ const Shop = () => {
     25,     // Fullmetal Alchemist
     21,     // Death Note
     2,      // Berserk
-    3       // Slam Dunk
+    51       // Slam Dunk
   ];
 
   const mangaPrices = {

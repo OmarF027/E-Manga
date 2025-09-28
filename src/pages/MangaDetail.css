@@ -4,19 +4,55 @@
   margin: 0 auto;
 }
 
-.manga-detail-back-link {
-  display: block;
-  text-decoration: none;
-  color: #007bff;
+.manga-detail-navigation {
+  display: flex;
+  gap: 15px;
   margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.manga-detail-back-link {
+  display: inline-block;
+  text-decoration: none;
+  color: #ffffff;
   font-size: 16px;
-  transition: color 0.3s;
+  transition: all 0.3s;
+  padding: 8px 16px;
+  border: 1px solid #6c757d;
+  border-radius: 5px;
+  background-color: #6c757d;
+  font-weight: 500;
 }
 
 .manga-detail-back-link:hover {
-  color: #0056b3;
-  text-decoration: underline;
+  color: #ffffff;
+  background-color: #5a6268;
+  border-color: #545b62;
+  text-decoration: none;
+  transform: translateY(-1px);
 }
+
+.manga-detail-shop-link {
+  display: inline-block;
+  text-decoration: none;
+  color: #ffffff;
+  font-size: 16px;
+  transition: all 0.3s;
+  padding: 8px 16px;
+  border: 1px solid #212529;   
+  border-radius: 5px;
+  background-color: #212529;   
+  font-weight: 500;
+}
+
+.manga-detail-shop-link:hover {
+  color: #ffffff;
+  background-color: #000000;   
+  border-color: #000000;
+  text-decoration: none;
+  transform: translateY(-1px);
+}
+
 
 .manga-detail-content {
   display: flex;

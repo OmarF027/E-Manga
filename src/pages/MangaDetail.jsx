@@ -80,9 +80,14 @@ const MangaDetail = () => {
 
   return (
     <div className="manga-detail-container">
-      <Link to="/" className="manga-detail-back-link">
-        ← Torna alla Home
-      </Link>
+      <div className="manga-detail-navigation">
+        <Link to="/" className="manga-detail-back-link">
+          Torna alla Home
+        </Link>
+        <Link to="/shop" className="manga-detail-shop-link">
+          Vai allo Shop 🛒
+        </Link>
+      </div>
       
       <div className="manga-detail-content">
         <div className="manga-detail-image-container">
