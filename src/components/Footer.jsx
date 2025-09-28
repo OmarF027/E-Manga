@@ -3,12 +3,25 @@ import './Footer.css';
 
 const Footer = () => {
   const [email, setEmail] = useState('');
+  const [isSubscribed, setIsSubscribed] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsLoading(true);
+    
+    // Simula un ritardo di invio
+    await new Promise(resolve => setTimeout(resolve, 1000));
+    
     console.log('Email subscribed:', email);
     setEmail('');
-    alert('Grazie per esserti iscritto alla newsletter!');
+    setIsSubscribed(true);
+    setIsLoading(false);
+    
+    // Nasconde il messaggio dopo 5 secondi
+    setTimeout(() => {
+      setIsSubscribed(false);
+    }, 5000);
   };
 
   return (
@@ -41,9 +54,19 @@ const Footer = () => {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
+                disabled={isLoading}
               />
-              <button type="submit">Iscriviti</button>
+              <button type="submit" disabled={isLoading}>
+                {isLoading ? 'Invio...' : 'Iscriviti'}
+              </button>
             </form>
+            
+            {/* Messaggio di conferma integrato */}
+            {isSubscribed && (
+              <div className="newsletter-success">
+                Grazie per esserti iscritto alla newsletter!
+              </div>
+            )}
           </div>
         </div>
 

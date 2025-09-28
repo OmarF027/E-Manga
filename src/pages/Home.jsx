@@ -25,7 +25,6 @@ const Home = () => {
             id: m.mal_id,
             title: m.title,
             author: m.authors?.[0]?.name || "Sconosciuto",
-            rating: m.score || "N/D",
             volumes: m.volumes || "N/D",
             status: m.status,
             year: m.published?.prop?.from?.year || "N/D",
@@ -84,20 +83,7 @@ const Home = () => {
                 </div>
               </form>
 
-              <div className="hero-stats">
-                <div className="stat">
-                  <span className="stat-number">10K+</span>
-                  <span className="stat-label">Manga disponibili</span>
-                </div>
-                <div className="stat">
-                  <span className="stat-number">500+</span>
-                  <span className="stat-label">Autori</span>
-                </div>
-                <div className="stat">
-                  <span className="stat-number">24h</span>
-                  <span className="stat-label">Consegna express</span>
-                </div>
-              </div>
+          
             </div>
           </div>
         </div>
@@ -123,7 +109,6 @@ const Home = () => {
                       className="manga-cover"
                       style={{ backgroundImage: `url(${manga.coverImage})` }}
                     >
-                      <div className="rating">⭐ {manga.rating}</div>
                       <div
                         className={`status-badge ${
                           manga.status?.includes("Publishing")

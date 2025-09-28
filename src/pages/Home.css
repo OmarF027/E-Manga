@@ -1,8 +1,8 @@
 :root {
   --primary: #ff6b6b;
   --primary-dark: #ee5a52;
-  --secondary: #48dbfb;
-  --accent: #1dd1a1;
+  --secondary: #27ae60;
+  --accent: #e74c3c;
   --dark: #2d3436;
   --light: #f8f9fa;
   --gray: #636e72;
@@ -393,17 +393,6 @@ body {
   font-weight: 600;
 }
 
-.rating {
-  position: absolute;
-  top: 15px;
-  right: 15px;
-  background: rgba(0, 0, 0, 0.7);
-  color: white;
-  padding: 5px 10px;
-  border-radius: 10px;
-  font-size: 0.8rem;
-}
-
 .status-badge {
   position: absolute;
   bottom: 15px;
@@ -415,12 +404,12 @@ body {
 }
 
 .status-badge.ongoing {
-  background: var(--accent);
+  background: #e74c3c;
   color: white;
 }
 
 .status-badge.completed {
-  background: var(--secondary);
+  background: #27ae60;
   color: white;
 }
 
