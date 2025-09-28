@@ -1,7 +1,19 @@
 import { useOutletContext } from 'react-router-dom';
+import { useEffect, useState } from 'react'; 
+import './Cart.css';
 
 const Cart = () => {
   const { cart, updateQuantity, removeFromCart } = useOutletContext();
+  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
+
+  useEffect(() => {
+    if (showSuccessMessage) {
+      const timer = setTimeout(() => {
+        setShowSuccessMessage(false);
+      }, 3000);
+      return () => clearTimeout(timer);
+    }
+  }, [showSuccessMessage]);
 
   const handleQuantityChange = (id, newQuantity) => {
     updateQuantity(id, newQuantity);
@@ -23,86 +35,84 @@ const Cart = () => {
     return cart.reduce((total, item) => total + (item.price * item.quantity), 0).toFixed(2);
   };
 
+  const handleCheckout = () => {
+    setShowSuccessMessage(true);
+    // Qui potresti anche svuotare il carrello dopo l'acquisto
+    // clearCart(); se la funzione esiste nel context
+  };
+
   if (cart.length === 0) {
     return (
-      <div style={{ textAlign: 'center', padding: '40px' }}>
-        <h2>Il Tuo Carrello</h2>
+      <div className="cart-empty">
+        <h2>Il tuo carrello</h2>
         <p>Il carrello è vuoto</p>
       </div>
     );
   }
 
   return (
-    <div style={{ padding: "20px", maxWidth: "800px", margin: "0 auto" }}>
-      <h2 style={{ textAlign: 'center', marginBottom: '30px' }}>Il Tuo Carrello</h2>
-      <div style={{ backgroundColor: "#fff", borderRadius: "8px", boxShadow: "0 2px 4px rgba(0,0,0,0.1)" }}>
+    <div className="cart-container">
+      {showSuccessMessage && (
+        <div className="success-message">
+          <div className="success-content">
+            <span className="success-icon">✓</span>
+            <div>
+              <h3>Grazie per il tuo acquisto!</h3>
+              <p>Totale: €{calculateTotal()}</p>
+            </div>
+          </div>
+        </div>
+      )}
+      
+      <h2 className="cart-title">Il tuo carrello</h2>
+      <div className="cart-content">
         {cart.map((item) => (
-          <div
-            key={item.id}
-            style={{
-              display: "flex",
-              alignItems: "center",
-              padding: "15px",
-              borderBottom: "1px solid #eee"
-            }}
-          >
+          <div key={item.id} className="cart-item">
             <img
               src={item.image}
               alt={item.title}
-              style={{ width: "80px", height: "80px", objectFit: "contain", marginRight: "15px" }}
+              className="item-image"
             />
-            <div style={{ flexGrow: 1 }}>
-              <h3 style={{ margin: "0 0 5px 0", fontSize: "16px" }}>{item.title}</h3>
-              <p style={{ margin: "0", fontWeight: "bold" }}>€{item.price.toFixed(2)}</p>
+            <div className="item-details">
+              <h3 className="item-title">{item.title}</h3>
+              <p className="item-price">€{item.price.toFixed(2)}</p>
             </div>
-            <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+            <div className="quantity-controls">
               <button 
                 onClick={() => handleDecrement(item.id, item.quantity)}
-                style={{ 
-                  padding: "5px 10px", 
-                  border: "1px solid #ddd", 
-                  borderRadius: "4px", 
-                  backgroundColor: "#f8f9fa",
-                  cursor: "pointer"
-                }}
+                className="quantity-btn"
               >
                 -
               </button>
-              <span style={{ minWidth: "30px", textAlign: "center" }}>{item.quantity}</span>
+              <span className="quantity-display">{item.quantity}</span>
               <button 
                 onClick={() => handleIncrement(item.id, item.quantity)}
-                style={{ 
-                  padding: "5px 10px", 
-                  border: "1px solid #ddd", 
-                  borderRadius: "4px", 
-                  backgroundColor: "#f8f9fa",
-                  cursor: "pointer"
-                }}
+                className="quantity-btn"
               >
                 +
               </button>
             </div>
-            <div style={{ marginLeft: "15px", minWidth: "80px", textAlign: "right" }}>
-              <p style={{ margin: "0", fontWeight: "bold" }}>€{(item.price * item.quantity).toFixed(2)}</p>
+            <div className="item-total">
+              <p className="total-price">€{(item.price * item.quantity).toFixed(2)}</p>
             </div>
             <button 
               onClick={() => removeFromCart(item.id)}
-              style={{ 
-                marginLeft: "15px", 
-                padding: "5px 10px", 
-                backgroundColor: "#dc3545", 
-                color: "white", 
-                border: "none", 
-                borderRadius: "4px", 
-                cursor: "pointer" 
-              }}
+              className="remove-btn"
             >
               Rimuovi
             </button>
           </div>
         ))}
-        <div style={{ padding: "15px", textAlign: "right", borderTop: "2px solid #eee" }}>
-          <h3 style={{ margin: "0" }}>Totale: €{calculateTotal()}</h3>
+        <div className="cart-footer">
+          <div className="total-section">
+            <h3 className="total-text">Totale: €{calculateTotal()}</h3>
+            <button 
+              onClick={handleCheckout}
+              className="checkout-btn"
+            >
+              Acquista Ora
+            </button>
+          </div>
         </div>
       </div>
     </div>
