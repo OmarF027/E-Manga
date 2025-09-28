@@ -70,24 +70,20 @@
   justify-content: center;
   background: rgba(255, 255, 255, 0.08);
   border-radius: 50%;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.15s ease;
   border: 1px solid rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
 }
 
 .footer-social a:hover {
   background: #e63946;
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(230, 57, 70, 0.3);
+  transform: translateY(-1px);
 }
 
-/* Newsletter */
 .footer-newsletter {
   background: rgba(255, 255, 255, 0.03);
   padding: 25px;
   border-radius: 12px;
   border: 1px solid rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(10px);
 }
 
 .footer-newsletter h4 {
@@ -118,14 +114,14 @@
   background: rgba(255, 255, 255, 0.05);
   color: #fff;
   font-size: 0.95rem;
-  transition: all 0.3s ease;
+  transition: all 0.15s ease;
 }
 
 .footer-newsletter input:focus {
   outline: none;
   border-color: #e63946;
   background: rgba(255, 255, 255, 0.08);
-  box-shadow: 0 0 0 3px rgba(230, 57, 70, 0.1);
+  box-shadow: 0 0 0 2px rgba(230, 57, 70, 0.1);
 }
 
 .footer-newsletter input::placeholder {
@@ -140,7 +136,7 @@
   border-radius: 8px;
   cursor: pointer;
   font-weight: 600;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.15s ease;
   white-space: nowrap;
   display: flex;
   align-items: center;
@@ -148,15 +144,9 @@
 }
 
 .footer-newsletter button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(230, 57, 70, 0.4);
+  transform: translateY(-1px);
 }
 
-.footer-newsletter button:active {
-  transform: translateY(0);
-}
-
-/* Messaggio di successo newsletter */
 .newsletter-success {
   display: flex;
   align-items: center;
@@ -170,17 +160,14 @@
   border-radius: 8px;
   font-size: 0.9rem;
   font-weight: 500;
-  animation: slideDown 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  backdrop-filter: blur(10px);
+  animation: slideDown 0.2s ease;
   text-align: center;
 }
 
-/* Stati di loading */
 .footer-newsletter button:disabled {
   opacity: 0.7;
   cursor: not-allowed;
-  transform: none !important;
-  box-shadow: none !important;
+  transform: none;
 }
 
 .footer-newsletter input:disabled {
@@ -188,11 +175,10 @@
   cursor: not-allowed;
 }
 
-/* Animazione per il messaggio di successo */
 @keyframes slideDown {
   from {
     opacity: 0;
-    transform: translateY(-10px);
+    transform: translateY(-5px);
   }
   to {
     opacity: 1;
@@ -210,10 +196,9 @@
 }
 
 .newsletter-success.fade-out {
-  animation: fadeOut 0.5s ease-in-out;
+  animation: fadeOut 0.3s ease;
 }
 
-/* Bottom Section */
 .footer-bottom {
   padding-top: 25px;
 }
@@ -259,7 +244,6 @@
   font-weight: 500;
 }
 
-/* Badges - Design Moderno */
 .footer-bottom-bottom {
   display: flex;
   justify-content: flex-end;
@@ -280,8 +264,7 @@
   font-size: 0.8rem;
   border: 1px solid rgba(255, 255, 255, 0.1);
   white-space: nowrap;
-  transition: all 0.3s ease;
-  backdrop-filter: blur(10px);
+  transition: all 0.15s ease;
   font-weight: 500;
   letter-spacing: 0.5px;
 }
@@ -292,7 +275,6 @@
   transform: translateY(-1px);
 }
 
-/* Responsive */
 @media (max-width: 968px) {
   .footer-top {
     grid-template-columns: 1fr;
@@ -374,11 +356,10 @@
   }
 }
 
-/* Animazioni aggiuntive */
 @keyframes fadeInUp {
   from {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(10px);
   }
   to {
     opacity: 1;
@@ -387,7 +368,7 @@
 }
 
 .footer-top, .footer-bottom {
-  animation: fadeInUp 0.6s ease-out;
+  animation: fadeInUp 0.4s ease;
 }
 
 .footer ::-webkit-scrollbar {
